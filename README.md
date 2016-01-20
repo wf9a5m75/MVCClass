@@ -1,0 +1,2 @@
+# mvcclass
+mvcclass = mvcobject + events
