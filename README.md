@@ -37,3 +37,7 @@ so I decided to extend the MVCObject class.
 
   testObj.set("hoge", 2);
   ```
+
+## Methods
+
+See [MVCObject](https://github.com/Treri/MVCObject) and [events](https://nodejs.org/api/events.html).
