@@ -39,10 +39,21 @@
     this.mvcobj.notify.call(this.mvcobj, key);
   };
   MVCClass.prototype.set = function(key, value) {
+    // Prevent multiple events are triggered for the same key and value.
+    if (this.get(key) === value) {
+      return;
+    }
     this.mvcobj.set.call(this.mvcobj, key, value);
   };
   MVCClass.prototype.setValues = function(values) {
-    this.mvcobj.setValues.call(this.mvcobj, values);
+    if (typeof values !== "object") {
+      return;
+    }
+    var self = this;
+    var keys = Object.keys(values);
+    keys.forEach(function(key) {
+      self.set.call(self, key, values[key]);
+    });
   };
   MVCClass.prototype.unbind = function(key) {
     this.mvcobj.unbind.call(this.mvcobj, key);
