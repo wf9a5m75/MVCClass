@@ -1,10 +1,20 @@
 (function(){
   var util = require("util"),
-      events = require("events"),
+      events = require("eventemitter2").EventEmitter2,
       mvcobject = require("mvcobject");
 
   function MVCClass(params) {
-    events.call(this);
+    params = params || {};
+    events.call(this, {
+      'wildcard': params.wildcard,
+      'delimiter': params.delimiter,
+      'newListener': params.newListener,
+      'maxListeners': params.maxListeners
+    });
+    delete params.wildcard;
+    delete params.delimiter;
+    delete params.newListener;
+    delete params.maxListeners;
 
     var self = this;
     self.mvcobj = new mvcobject();
@@ -30,7 +40,7 @@
   util.inherits(MVCClass, events);
 
   MVCClass.prototype.bindTo = function(key, target, targetKey, noNotify) {
-    this.mvcobj.setValues.call(this.mvcobj, key, target, targetKey, noNotify);
+    this.mvcobj.bindTo.call(this.mvcobj, key, target, targetKey, noNotify);
   };
   MVCClass.prototype.get = function(key) {
     return this.mvcobj.get(key);

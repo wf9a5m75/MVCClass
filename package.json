@@ -1,6 +1,6 @@
 {
   "name": "mvcclass",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "mvcclass = mvcobject + events",
   "main": "MVCClass.js",
   "repository": {
@@ -8,7 +8,8 @@
     "url": "https://github.com/wf9a5m75/MVCClass"
   },
   "keywords": [
-    "MVCObject", "events"
+    "MVCObject",
+    "events"
   ],
   "author": "Masashi Katsumata",
   "license": "MIT",
@@ -16,6 +17,7 @@
     "url": "https://github.com/wf9a5m75/MVCClass/issues"
   },
   "dependencies": {
+    "eventemitter2": "^1.0.0",
     "mvcobject": "^0.7.0"
   }
 }
